@@ -186,7 +186,7 @@ public class DiscordHtmlTranscripts {
 
                         Element attachmentImage = document.createElement("img");
                         attachmentImage.addClass("chatlog__attachment-media");
-                        attachmentImage.attr("src", attach.getUrl());
+                        attachmentImage.attr("src", attach.getProxy().getUrl());
                         attachmentImage.attr("alt", "Image attachment");
                         attachmentImage.attr("loading", "lazy");
                         attachmentImage.attr("title",
@@ -197,7 +197,7 @@ public class DiscordHtmlTranscripts {
                     } else if (videoFormats.contains(attachmentType)) {
                         Element attachmentVideo = document.createElement("video");
                         attachmentVideo.addClass("chatlog__attachment-media");
-                        attachmentVideo.attr("src", attach.getUrl());
+                        attachmentVideo.attr("src", attach.getProxy().getUrl());
                         attachmentVideo.attr("alt", "Video attachment");
                         attachmentVideo.attr("controls", true);
                         attachmentVideo.attr("title",
@@ -207,7 +207,7 @@ public class DiscordHtmlTranscripts {
                     } else if (audioFormats.contains(attachmentType)) {
                         Element attachmentAudio = document.createElement("audio");
                         attachmentAudio.addClass("chatlog__attachment-media");
-                        attachmentAudio.attr("src", attach.getUrl());
+                        attachmentAudio.attr("src", attach.getProxy().getUrl());
                         attachmentAudio.attr("alt", "Audio attachment");
                         attachmentAudio.attr("controls", true);
                         attachmentAudio.attr("title",
@@ -231,7 +231,7 @@ public class DiscordHtmlTranscripts {
                         attachmentGenericName.addClass("chatlog__attachment-generic-name");
 
                         Element attachmentGenericNameLink = document.createElement("a");
-                        attachmentGenericNameLink.attr("href", attach.getUrl());
+                        attachmentGenericNameLink.attr("href", attach.getProxy().getUrl());
                         attachmentGenericNameLink.text(attach.getFileName());
 
                         attachmentGenericName.appendChild(attachmentGenericNameLink);
@@ -402,11 +402,11 @@ public class DiscordHtmlTranscripts {
 
                         Element embedThumbnailLink = document.createElement("a");
                         embedThumbnailLink.addClass("chatlog__embed-thumbnail-link");
-                        embedThumbnailLink.attr("href", embed.getThumbnail().getUrl());
+                        embedThumbnailLink.attr("href", embed.getThumbnail().getProxy().getUrl());
 
                         Element embedThumbnailImage = document.createElement("img");
                         embedThumbnailImage.addClass("chatlog__embed-thumbnail");
-                        embedThumbnailImage.attr("src", embed.getThumbnail().getUrl());
+                        embedThumbnailImage.attr("src", embed.getThumbnail().getProxy().getUrl());
                         embedThumbnailImage.attr("alt", "Thumbnail");
                         embedThumbnailImage.attr("loading", "lazy");
 
@@ -425,11 +425,11 @@ public class DiscordHtmlTranscripts {
 
                         Element embedImageLink = document.createElement("a");
                         embedImageLink.addClass("chatlog__embed-image-link");
-                        embedImageLink.attr("href", embed.getImage().getUrl());
+                        embedImageLink.attr("href", embed.getImage().getProxy().getUrl());
 
                         Element embedImageImage = document.createElement("img");
                         embedImageImage.addClass("chatlog__embed-image");
-                        embedImageImage.attr("src", embed.getImage().getUrl());
+                        embedImageImage.attr("src", embed.getImage().getProxy().getUrl());
                         embedImageImage.attr("alt", "Image");
                         embedImageImage.attr("loading", "lazy");
 
