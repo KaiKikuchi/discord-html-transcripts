@@ -3,3 +3,8 @@
 target
 
 src/test/java/Example.java
+/bin/
+/.settings/
+/.classpath
+/.factorypath
+/.project
