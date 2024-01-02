@@ -1,7 +1,6 @@
 package me.ryzeon.transcripts;
 
 import kotlin.text.Charsets;
-import lombok.var;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.entities.channel.middleman.GuildChannel;
 import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel;
@@ -82,10 +81,10 @@ public class DiscordHtmlTranscripts {
                 Element reference = document.createElement("div");
                 reference.addClass("chatlog__reference");
 
-                var referenceMessage = message.getReferencedMessage();
+                Message referenceMessage = message.getReferencedMessage();
                 User author = referenceMessage.getAuthor();
                 Member member = channel.getGuild().getMember(author);
-                var color = Formatter.toHex(member.getColor() == null ? java.awt.Color.WHITE : member.getColor());
+                String color = Formatter.toHex(member.getColor() == null ? java.awt.Color.WHITE : member.getColor());
 
                 //        System.out.println("REFERENCE MSG " + referenceMessage.getContentDisplay());
                 reference.html("<img class=\"chatlog__reference-avatar\" src=\""
@@ -110,7 +109,7 @@ public class DiscordHtmlTranscripts {
                 messageGroup.appendChild(reference);
             }
 
-            var author = message.getAuthor();
+            User author = message.getAuthor();
 
             Element authorElement = document.createElement("div");
             authorElement.addClass("chatlog__author-avatar-container");
@@ -180,7 +179,7 @@ public class DiscordHtmlTranscripts {
                     Element attachmentsDiv = document.createElement("div");
                     attachmentsDiv.addClass("chatlog__attachment");
 
-                    var attachmentType = attach.getFileExtension();
+                    String attachmentType = attach.getFileExtension();
                     if (imageFormats.contains(attachmentType)) {
                         Element attachmentLink = document.createElement("a");
 

@@ -1,7 +1,5 @@
 package me.ryzeon.transcripts;
 
-import lombok.experimental.UtilityClass;
-
 import java.awt.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,21 +11,20 @@ import java.util.regex.Pattern;
  * Twitter: @Ryzeon_ 😎
  * Github: github.ryzeon.me
  */
-@UtilityClass
 public class Formatter {
 
-    private final Pattern STRONG = Pattern.compile("\\*\\*(.+?)\\*\\*");
-    private final Pattern EM = Pattern.compile("\\*(.+?)\\*");
-    private final Pattern S = Pattern.compile("~~(.+?)~~");
-    private final Pattern U = Pattern.compile("__(.+?)__");
-    private final Pattern CODE = Pattern.compile("```(.+?)```");
-    private final Pattern CODE_1 = Pattern.compile("`(.+?)`");
-    private final Pattern QUOTE = Pattern.compile("^>{1,3} (.*)$");
-    private final Pattern LINK = Pattern.compile("\\[([^\\[]+)\\](\\((www|http:|https:)+[^\\s]+[\\w]\\))");
+    private final static Pattern STRONG = Pattern.compile("\\*\\*(.+?)\\*\\*");
+    private final static Pattern EM = Pattern.compile("\\*(.+?)\\*");
+    private final static Pattern S = Pattern.compile("~~(.+?)~~");
+    private final static Pattern U = Pattern.compile("__(.+?)__");
+    private final static Pattern CODE = Pattern.compile("```(.+?)```");
+    private final static Pattern CODE_1 = Pattern.compile("`(.+?)`");
+    private final static Pattern QUOTE = Pattern.compile("^>{1,3} (.*)$");
+    private final static Pattern LINK = Pattern.compile("\\[([^\\[]+)\\](\\((www|http:|https:)+[^\\s]+[\\w]\\))");
     // conver this /(?:\r\n|\r|\n)/g to patter in java
-    private final Pattern NEW_LINE = Pattern.compile("\\n");
+    private final static Pattern NEW_LINE = Pattern.compile("\\n");
 
-    public String formatBytes(long bytes) {
+    public static String formatBytes(long bytes) {
         int unit = 1024;
         if (bytes < unit)
             return bytes + " B";
@@ -36,7 +33,7 @@ public class Formatter {
         return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
     }
 
-    public String format(String originalText) {
+    public static String format(String originalText) {
         Matcher matcher = STRONG.matcher(originalText);
         String newText = originalText;
         while (matcher.find()) {
@@ -101,7 +98,7 @@ public class Formatter {
         return newText;
     }
 
-    public String toHex(Color color) {
+    public static String toHex(Color color) {
         String hex = Integer.toHexString(color.getRGB() & 0xffffff);
         while(hex.length() < 6){
             hex = "0" + hex;
